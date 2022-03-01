@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- wedding.panggung tree view -->
+    <record id="wedding_panggung_view_tree" model="ir.ui.view">
+        <field name="name">Jenis Panggung</field>
+        <field name="model">wedding.panggung</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="pelaminan"/>
+                <field name="bunga"/>
+                <field name="accesories"/>
+                <field name="harga"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- wedding.panggung action window -->
+    <record id="wedding_panggung_action" model="ir.actions.act_window">
+        <field name="name">Daftar Jenis Panggung</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wedding.panggung</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="wedding_akomodasi_panggung_menu_act" name="Panggung Pelaminan" parent="wedding_akomodasi_menu_categ" action="wedding_panggung_action" sequence="10"/>
+    
+</odoo>

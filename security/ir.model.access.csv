@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wedding_partner,access_wedding.partner,model_wedding_partner,,1,1,1,1
+access_wedding_panggung,access_wedding.panggung,model_wedding_panggung,,1,1,1,1
