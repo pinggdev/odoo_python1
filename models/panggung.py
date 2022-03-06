@@ -6,17 +6,34 @@ class Panggung(models.Model):
     _description = 'New Description'
 
     name = fields.Char(string='Name', required=True)
-    pelaminan = fields.Many2one(comodel_name='wedding.pelaminan', string='Tipe Pelaminan', required=True, 
-    domain=[('harga','>', '900000')]
-    )
+    pelaminan_id = fields.Many2one(comodel_name='wedding.pelaminan', 
+                                string='Tipe Pelaminan', 
+                                required=True)   
+    kursipengantin_id = fields.Many2one(comodel_name='wedding.kursipengantin', 
+                                        string='Kursi Pengantin', 
+                                        required=True)
     
-    bunga = fields.Selection(string='Tipe Bunga', selection=[('bunga mati', 'Bunga Mati'), ('bunga hidup', 'Bunga Hidup')])
+    bunga = fields.Selection(string='Tipe Bunga', selection=[('bunga mati', 'Bunga Dead'), ('bunga hidup', 'Bunga Life')])    
     accesories = fields.Char(string='Accesories Pelaminan')
-    harga = fields.Char(compute='_compute_harga', string='Harga')
+    harga = fields.Integer(compute='_compute_harga', string='Harga')
     
-    @api.depends('pelaminan')
+    @api.depends('pelaminan_id','kursipengantin_id')
     def _compute_harga(self):
         for record in self:
-            record.harga = record.pelaminan.harga + 200000
-        
+            record.harga = record.pelaminan_id.harga + record.kursipengantin_id.harga
     
+    stok = fields.Integer(string='Stok Paket Panggung')
+    
+    des_pelaminan = fields.Char(compute='_compute_des_pelaminan', string='Deskripsi Pelaminan')
+    
+    @api.depends('pelaminan_id')
+    def _compute_des_pelaminan(self):
+        for record in self:
+            record.des_pelaminan = record.pelaminan_id.deskripsi
+    
+    des_kursipengantin = fields.Char(compute='_compute_des_kursipengantin', string='Deskripsi Kursi Pengantin')
+    
+    @api.depends('kursipengantin_id')
+    def _compute_des_kursipengantin(self):
+        for record in self:
+            record.des_kursipengantin = record.kursipengantin_id.deskripsi
