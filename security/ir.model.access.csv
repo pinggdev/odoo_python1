@@ -4,3 +4,5 @@ access_wedding_panggung,access_wedding.panggung,model_wedding_panggung,,1,1,1,1
 access_wedding_pelaminan,access_wedding.pelaminan,model_wedding_pelaminan,,1,1,1,1
 access_wedding_kursipengantin,access_wedding.kursipengantin,model_wedding_kursipengantin,,1,1,1,1
 access_wedding_kursitamu,access_wedding.kursitamu,model_wedding_kursitamu,,1,1,1,1
+access_wedding_order,access_wedding.order,model_wedding_order,,1,1,1,1
+access_wedding_order_detail,access_wedding.order_detail,model_wedding_order_detail,,1,1,1,1
