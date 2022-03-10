@@ -8,6 +8,7 @@ class Order(models.Model):
     orderdetail_ids = fields.One2many(comodel_name='wedding.order_detail', inverse_name='order_id', string='Order Detail')
     
     name = fields.Char(string='Kode Order', required=True)
+    tanggal_pesan = fields.Datetime('Tanggal Pesan', default=fields.Datetime.now())
     total = fields.Integer(compute='_compute_total', string='Total', store=True)
     
     @api.depends('orderdetail_ids')
@@ -40,3 +41,10 @@ class OrderDetail(models.Model):
     def _compute_harga(self):
         for record in self:
             record.harga = record.panggung_id.harga * record.qty
+
+    @api.model
+    def create(self, vals): 
+        record = super(OrderDetail, self).create(vals)
+        if record.qty:
+            self.env['wedding.panggung'].search([('id', '=', record.panggung_id.id)]).write({'stok':record.panggung_id.stok-record.qty})
+            return record
