@@ -14,7 +14,6 @@
                 <field name="accesories"/>
                 <field name="harga"/>
                 <field name="stok"/>
-                <field name="orderdetail_ids"/>
             </tree>
         </field>
     </record>
@@ -48,14 +47,7 @@
                         <page string="DESKRIPSI KURSI PENGANTIN">
                             <field name="des_kursipengantin"/>
                         </page>
-                        <page string="ORDER DETAIL">
-                            <field name="orderdetail_ids">
-                                <tree>
-                                    <field name="name"/>
-                                    <field name="qty"/>
-                                </tree>
-                            </field>
-                        </page>
+                        
                     </notebook>
                 </sheet>
             </form>

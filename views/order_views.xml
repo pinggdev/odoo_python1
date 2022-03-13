@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <!-- wedding_order tree view -->
+    <!-- wedding.order tree view -->
     <record id="wedding_order_view_tree" model="ir.ui.view">
         <field name="name">Wedding Order</field>
         <field name="model">wedding.order</field>
         <field name="arch" type="xml">
             <tree>
                 <!-- Add your fields here -->
-                <field name="name"/>
-                <field name="tanggal_pesan"/>
+                <field name="name"/>    
+                <field name="tanggal_pesan"/> 
+                <field name="tanggal_pengiriman"/>           
                 <field name="total"/>
-                <field name="orderdetail_ids"/>
+                <field name="orderpanggungdetail_ids"/>
             </tree>
         </field>
     </record>
@@ -25,37 +25,44 @@
                 <sheet>
                     <group>
                         <!-- Add your fields here -->
-                        <field name="name"/>
+                        <field name="name"/> 
                         <field name="tanggal_pesan"/>
-                        <field name="total"/>
-
-                        <notebook colspan="4">
-                            <page name="panggung" string="Panggung">
-                                <field name="orderdetail_ids">
-                                    <tree editable="bottom">
-                                        <field name="panggung_id"/>
-                                        <field name="harga_satuan"/>
-                                        <field name="qty"/>
-                                        <field name="harga" sum="Total" />
-                                    </tree>
-                                </field>    
-                            </page>
-                        </notebook>
-                    </group>
+                        <field name="tanggal_pengiriman"/>
+                        <field name="total"/>                            
+                        <field name="orderpanggungdetail_ids">
+                            <tree editable='bottom'>
+                                <field name="panggung_id"/>  
+                                <field name="harga_satuan"/> 
+                                <field name="qty"/> 
+                                <field name="harga" sum="Total"/>                                        
+                            </tree>
+                        </field>      
+                        <field name="orderkursitamudetail_ids">
+                            <tree editable='bottom'>
+                                <field name="kursitamu_id"/>  
+                                <field name="harga_satuan"/> 
+                                <field name="qty"/> 
+                                <field name="harga" sum="Total"/>                                        
+                            </tree>
+                        </field>                                                 
+                    </group> 
                 </sheet>
             </form>
         </field>
     </record>
-
-    <!-- wedding.order action window -->
+    <!-- wedding_order_action action window -->
     <record id="wedding_order_action" model="ir.actions.act_window">
-        <field name="name">Wedding Order</field>
+        <field name="name">Order Panggung</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">wedding.order</field>
         <field name="view_mode">tree,form</field>
     </record>
-
     <!-- This Menu Item must have a parent and an action -->
-    <menuitem id="wedding_order_menu_act" name="Order" parent="wedding_order_menu_categ" action="wedding_order_action" sequence="10"/>
+    <menuitem 
+        id="wedding_order_menu_act" 
+        name="Order Panggung" 
+        parent="wedding_order_menu_categ" 
+        action="wedding_order_action" 
+        sequence="10"/>
 
 </odoo>

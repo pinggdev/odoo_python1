@@ -15,7 +15,7 @@ class Panggung(models.Model):
     
     bunga = fields.Selection(string='Tipe Bunga', selection=[('bunga mati', 'Bunga Dead'), ('bunga hidup', 'Bunga Life')])    
     accesories = fields.Char(string='Accesories Pelaminan')
-    orderdetail_ids = fields.One2many(comodel_name='wedding.order_detail', inverse_name='panggung_id', string='Order Detail')
+    
     
     harga = fields.Integer(compute='_compute_harga', string='Harga')
     
@@ -39,3 +39,4 @@ class Panggung(models.Model):
     def _compute_des_kursipengantin(self):
         for record in self:
             record.des_kursipengantin = record.kursipengantin_id.deskripsi
+    
