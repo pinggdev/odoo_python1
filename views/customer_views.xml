@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- res.partner inherit form view -->
+    <record id="res_partner_view_id" model="ir.ui.view">
+        <field name="name">res.partner.inherit.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <field name="vat" position="after">
+                <field name="is_pegawainya"/>
+                <field name="is_customernya"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- res.partner inherit search view -->
+    <record id="res_partner_inherit_search" model="ir.ui.view">
+        <field name="name">res.partner.inherit.view.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <filter name="customernya" string="Customer" domain="[('is_customernya', '=', 'True')]" />
+                <filter name="pegawainya" string="Pegawai" domain="[('is_pegawainya', '=', 'True')]" />
+            </field>   
+        </field>
+    </record>
+
+    <!-- res.partner action window -->
+    <record id="res_partner_customer_action" model="ir.actions.act_window">
+        <field name="name">Customer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="context">
+            {
+                'search_default_customernya': 1,
+                'default_is_customernya': True,
+            }
+        </field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="wedding_partner_customer_menu_act" name="Customer" parent="wedding_partner_menu_categ" action="res_partner_customer_action" sequence="20"/>
+
+</odoo>

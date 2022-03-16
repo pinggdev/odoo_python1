@@ -8,6 +8,7 @@
             <tree>
                 <!-- Add your fields here -->
                 <field name="name"/>    
+                <field name="pemesan"/>
                 <field name="tanggal_pesan"/> 
                 <field name="tanggal_pengiriman"/>           
                 <field name="total"/>
@@ -26,6 +27,7 @@
                     <group>
                         <!-- Add your fields here -->
                         <field name="name"/> 
+                        <field name="pemesan"/>
                         <field name="tanggal_pesan"/>
                         <field name="tanggal_pengiriman"/>
                         <field name="total"/>                            
