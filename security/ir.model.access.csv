@@ -6,3 +6,4 @@ access_wedding_kursitamu,access_wedding.kursitamu,model_wedding_kursitamu,,1,1,1
 access_wedding_order,access_wedding.order,model_wedding_order,,1,1,1,1
 access_wedding_orderpanggungdetail,access.wedding.orderpanggungdetail,model_wedding_orderpanggungdetail,,1,1,1,1
 access_wedding_orderkursitamudetail,access.wedding.orderkursitamudetail,model_wedding_orderkursitamudetail,,1,1,1,1
+access_wedding_pengembalian,access.wedding.pengembalian,model_wedding_pengembalian,,1,1,1,1

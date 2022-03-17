@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- wedding.pengembalian tree view -->
+    <record id="wedding_pengembalian_view_tree" model="ir.ui.view">
+        <field name="name">Daftar Pengembalian Barang</field>
+        <field name="model">wedding.pengembalian</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="order_id"/>
+                <field name="nama_penyewa"/>
+                <field name="tagihan"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- wedding.pengembalian action window -->
+    <record id="wedding_pengembalian_action" model="ir.actions.act_window">
+        <field name="name">Pengembalian Barang</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wedding.pengembalian</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="wedding_pengembalian_menu_act" name="Pengembalian Barang" parent="wedding_order_menu_categ" action="wedding_pengembalian_action" sequence="20"/>
+
+</odoo>

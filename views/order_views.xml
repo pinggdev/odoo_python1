@@ -5,13 +5,17 @@
         <field name="name">Wedding Order</field>
         <field name="model">wedding.order</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree delete="false">
+                <header>
+                    <button name="kembali_barang" string="Kembali Barang" class="btn btn-success" type="object" />
+                </header>
                 <!-- Add your fields here -->
                 <field name="name"/>    
                 <field name="pemesan"/>
                 <field name="tanggal_pesan"/> 
                 <field name="tanggal_pengiriman"/>           
                 <field name="total"/>
+                <field name="sudah_kembali"/>
                 <field name="orderpanggungdetail_ids"/>
             </tree>
         </field>
@@ -30,7 +34,8 @@
                         <field name="pemesan"/>
                         <field name="tanggal_pesan"/>
                         <field name="tanggal_pengiriman"/>
-                        <field name="total"/>                            
+                        <field name="total"/>
+                        <field name="sudah_kembali"/>                          
                         <field name="orderpanggungdetail_ids">
                             <tree editable='bottom'>
                                 <field name="panggung_id"/>  
