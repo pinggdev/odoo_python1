@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": 
+        [
+            "D:/odoo/odoo-stubs-14.0", 
+            "D:/odoo/odoo-14.0"
+        ]
+}
