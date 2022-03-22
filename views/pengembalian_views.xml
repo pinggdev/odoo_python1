@@ -8,11 +8,36 @@
         <field name="arch" type="xml">
             <tree>
                 <!-- Add your fields here -->
-                <field name="name"/>
                 <field name="order_id"/>
-                <field name="nama_penyewa"/>
+                <field name="name"/>
                 <field name="tagihan"/>
+                <field name="tgl_pengembalian"/>
             </tree>
+        </field>
+    </record>
+
+    <!-- wedding.pengembalian form view -->
+    <record id="wedding_pengembalian_view_form" model="ir.ui.view">
+        <field name="name">Pengembalian Barang</field>
+        <field name="model">wedding.pengembalian</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="order_id"/>
+                        <field name="name"/>
+                    </group>
+                        <group>                        
+                        <field name="tgl_pengembalian"/>
+                    </group>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="tagihan"/>
+                        
+                    </group>
+                </sheet>
+            </form>
         </field>
     </record>
 
