@@ -32,9 +32,21 @@ class Order(models.Model):
             record.total = a + b
 
     sudah_kembali = fields.Boolean(string='Sudah Dikembalikan', default=False)
-
-    def kembali_barang(self):
-        pass
+    
+    def invoice(self):
+        invoices = self.env['account.move'].create({
+            'move_type': 'out_invoice',
+            'partner_id': self.pemesan,
+            'invoice_date': self.tanggal_pesan,
+            'invoice_line_ids': [(0, 0, {
+                'product_id': 0,
+                'quantity': 1,
+                'price_unit': self.total,
+                'price_subtotal': self.total
+            })]
+        })
+        self.sudah_kembali = True
+        return invoices
     
 
 class OrderPanggungDetail(models.Model):
